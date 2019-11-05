@@ -5,4 +5,4 @@ export const HEADLINES_AVAILABLE = 'home/HEADLINES_AVAILABLE';
 export const HEADLINES_ERROR = 'home/HEADLINES_ERROR';
 
 export const API_URL = 'https://newsapi.org/v2/top-headlines?';
-export const API_KEY = ["4b935ecfc1354c0fa7d01f3d7478d156"];
+export const API_KEY = "4b935ecfc1354c0fa7d01f3d7478d156";

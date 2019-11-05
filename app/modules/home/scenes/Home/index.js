@@ -3,16 +3,18 @@ import {FlatList, RefreshControl, ActivityIndicator} from 'react-native';
 
 import {connect} from 'react-redux';
 
-import NewsItem from "../../components/NewsItem"
+import NewsItem from "../../components/newsItem/index"
 
 import {actions as home} from "../../index"
+
+
 
 const {getNewsHeadlines} = home;
 
 class Home extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             refreshing: false
         }
@@ -23,6 +25,7 @@ class Home extends React.Component {
     }
 
     getNewsHeadlines = (refreshing = true) => {
+
         this.setState({refreshing});
         this.props.getNewsHeadlines()
             .finally(() => this.setState({refreshing: false}));
@@ -39,7 +42,7 @@ class Home extends React.Component {
             return (
                 <FlatList
                     style={{backgroundColor: '#eaeaea'}}
-                    contentContainerStyle={{paddingVertical: 5,}}
+                    contentContainerStyle={{paddingVertical: 15,}}
                     ref='listRef'
                     data={articles}
                     extraData={this.state}

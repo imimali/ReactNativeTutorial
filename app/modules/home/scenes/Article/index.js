@@ -17,7 +17,7 @@ export default class Article extends React.Component {
         return (
             <ActivityIndicator
                 style={{
-                    borderWidth1,
+                    borderWidth:1,
                     alignItems: 'center',
                     justifyContent: 'center'
                 }}

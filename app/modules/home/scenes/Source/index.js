@@ -3,15 +3,15 @@ import {FlatList, RefreshControl, ActivityIndicator} from 'react-native';
 
 import {connect} from 'react-redux';
 
-import NewsItem from "../../components/NewsItem"
+import NewsItem from "../../components/newsItem/index"
 
 import {actions as home} from "../../index"
 
 const {getHeadlinesBySource} = home;
 
 class Source extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             refreshing: false,
             isFetching: true,
