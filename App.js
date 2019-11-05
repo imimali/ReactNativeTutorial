@@ -1,35 +1,27 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Provider} from 'react-redux';
+import Home from './app/modules/home/scenes/Home/index';
 
-import Router from './app/config/routes'
-import {fontFamily} from "./app/styles/theme";
 import {moderateScale as normalize} from 'react-native-size-matters';
+import store from './app/redux/store';
+import RouterComponent from "./app/config/routes";
 
 export default class App extends React.Component {
     render() {
         return (
-            /*<Provider store={store}>*/
-            <View style={styles.container}>
-                <Text style={styles.textBox}>Exorcizamus te omnis imundus spiritus omnis satanica potestas omnis
-                    incursio infernalis adversarii</Text>
-            </View>
-            // </Provider>?
+            <Provider store={store}>
+                <View style={styles.container}>
+                    <RouterComponent/>
+                </View>
+            </Provider>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#75b',
-        alignItems: 'center',
-        justifyContent: 'center',
-
-
+        flex: 4,
+        backgroundColor: '#333',
     },
-    textBox: {
-        fontSize: normalize(36),
-        margin: normalize(20)
-    }
 });
