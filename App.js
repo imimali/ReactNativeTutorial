@@ -1,12 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import Router from './app/config/routes'
+
+export default class App extends React.Component {
+  render() {
+    return (
+        /*<Provider store={store}>*/
+        <Router />
+        // </Provider>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
