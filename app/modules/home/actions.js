@@ -2,11 +2,11 @@ import axios from 'axios';
 
 import * as t from './constants';
 
-export function getNewsHeadlines(country = "ro") {
+export function getNewsHeadlines(country = "us") {
     return (dispatch) => {
         dispatch({type: t.RETRIEVING_HEADLINES});
         return new Promise((resolve, reject) => {
-            const url = `${t.API_URL}country=${country}&apiKey=${t.API_KEY}&pageSize=20`;
+            const url = `${t.API_URL}country=${country}&apiKey=${t.API_KEY}&pageSize=50`;
             axios.get(url)
                 .then(res => res.data)
                 .then((data) => {
@@ -24,7 +24,7 @@ export function getHeadlinesBySource(source) {
     return (dispatch) => {
         dispatch({type: t.RETRIEVING_HEADLINES});
         return new Promise((resolve, reject) => {
-            const url = `${t.API_URL}sources=${source}&apiKey=${t.API_KEY}&pageSize=20`;
+            const url = `${t.API_URL}sources=${source}&apiKey=${t.API_KEY}&pageSize=50`;
             axios.get(url)
                 .then(res => res.data)
                 .then((data) => resolve(data))

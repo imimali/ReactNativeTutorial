@@ -1,12 +1,11 @@
 import React from 'react';
-import {FlatList, RefreshControl, ActivityIndicator} from 'react-native';
+import {FlatList, RefreshControl, ActivityIndicator, Button} from 'react-native';
 
 import {connect} from 'react-redux';
-
+import {Actions} from 'react-native-router-flux';
 import NewsItem from "../../components/newsItem/index"
 
 import {actions as home} from "../../index"
-
 
 
 const {getNewsHeadlines} = home;
@@ -40,23 +39,23 @@ class Home extends React.Component {
 
         else {
             return (
-                <FlatList
-                    style={{backgroundColor: '#eaeaea'}}
-                    contentContainerStyle={{paddingVertical: 15,}}
-                    ref='listRef'
-                    data={articles}
-                    extraData={this.state}
-                    renderItem={this.renderItem}
-                    initialNumToRender={5}
-                    keyExtractor={(item, index) => index.toString() + "_home"}
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={this.state.refreshing}
-                            onRefresh={this.getNewsHeadlines}
-                        />
-                    }
+                <FlatList key="lliisstt"
+                          style={{backgroundColor: '#eaeaea'}}
+                          contentContainerStyle={{paddingVertical: 15,}}
+                          ref='listRef'
+                          data={articles}
+                          extraData={this.state}
+                          renderItem={this.renderItem}
+                          initialNumToRender={5}
+                          keyExtractor={(item, index) => index.toString() + "_home"}
+                          refreshControl={
+                              <RefreshControl
+                                  refreshing={this.state.refreshing}
+                                  onRefresh={this.getNewsHeadlines}
+                              />
+                          }
                 />
-            )
+            );
         }
     }
 }

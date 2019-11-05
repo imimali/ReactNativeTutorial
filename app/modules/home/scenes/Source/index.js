@@ -25,33 +25,34 @@ class Source extends React.Component {
         this.getHeadlinesBySource(false, true)
     }
 
-    getHeadlinesBySource=(refreshing=true,isFetching=false)=>{
-        let source=this.props.source;
+    getHeadlinesBySource = (refreshing = true, isFetching = false) => {
+        let source = this.props.source;
 
-        this.setState({refreshing,isFetching});
+        this.setState({refreshing, isFetching});
         this.props.getHeadlinesBySource(source.id)
-            .then(({articles})=>this.setState({articles}))
-            .catch((error)=>alert(error.message))
-            .finally(()=>this.setState({refreshing:false,isFetching:false}));
+            .then(({articles}) => this.setState({articles}))
+            .catch((error) => alert(error.message))
+            .finally(() => this.setState({refreshing: false, isFetching: false}));
     };
     renderItem = ({item, index}) => {
         return <NewsItem article={item}/>
     };
+
     render() {
-        const {articles, isFetching, hasError,errorMsg} = this.state;
+        const {articles, isFetching, hasError, errorMsg} = this.state;
 
         if (isFetching) return <ActivityIndicator/>;
         else {
             return (
                 <FlatList
-                    style={{backgroundColor:'#eaeaea'}}
-                    contentContainerStyle={{paddingVertical:5,}}
+                    style={{backgroundColor: '#eaeaea'}}
+                    contentContainerStyle={{paddingVertical: 5,}}
                     ref='listRef'
                     data={articles}
                     extraData={this.state}
                     renderItem={this.renderItem}
                     initialNumToRender={5}
-                    keyExtractor={(item, index) => index.toString()+"_source"}
+                    keyExtractor={(item, index) => index.toString() + "_source"}
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refreshing}
@@ -64,4 +65,4 @@ class Source extends React.Component {
 }
 
 
-export default connect(null, { getHeadlinesBySource })(Source);
+export default connect(null, {getHeadlinesBySource})(Source);

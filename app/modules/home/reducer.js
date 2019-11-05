@@ -1,6 +1,6 @@
 import * as t from './constants';
 
-let initialState = {isFetching: true, articles: [], hasError: false, errorMsg: ""};
+let initialState = {isFetching: true, articles: [], hasError: false, errorMsg: "", country: "us"};
 
 const homeReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -13,10 +13,10 @@ const homeReducer = (state = initialState, action) => {
 
             return {...state, isFetching: false, articles, hasError: false};
         }
-        case t.HEADLINES_ERROR:{
-            const error=action.error;
+        case t.HEADLINES_ERROR: {
+            const error = action.error;
 
-            return {...state,isFetching: false,hasError: true,errorMsg: error};
+            return {...state, isFetching: false, hasError: true, errorMsg: error};
         }
         default:
             return state;
